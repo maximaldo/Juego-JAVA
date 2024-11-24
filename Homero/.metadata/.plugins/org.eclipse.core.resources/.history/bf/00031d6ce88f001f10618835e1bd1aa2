@@ -1,0 +1,11 @@
+package com.game.main;
+
+public class Player {
+	int health=1;
+	public String name = "Homero";
+	private int counter = 0;
+	public static String objectId = "Player Objet"
+	void incrementHealth() {
+		
+	}
+}

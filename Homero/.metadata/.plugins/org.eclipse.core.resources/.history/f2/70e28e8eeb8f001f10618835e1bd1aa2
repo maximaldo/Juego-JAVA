@@ -1,0 +1,5 @@
+package com.game.gfx;
+
+public class Window {
+	private JFrame frame;
+}

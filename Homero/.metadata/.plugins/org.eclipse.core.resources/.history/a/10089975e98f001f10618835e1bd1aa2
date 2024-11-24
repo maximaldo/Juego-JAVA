@@ -1,0 +1,43 @@
+package com.game.main;
+
+public class Game implements Runnable{
+
+	//  Constantes del juego
+	
+	// Variables del juego
+	private boolean running;
+	
+	// Componentes del juego
+	private Thread thread;
+	
+	public Game() {
+		initialize();
+	}
+	
+	public static void main(String[] args) {
+
+		// Player mario = new Player();
+		new Game();
+	}
+	private void initialize() {
+		start();
+	}
+	private synchronized void start() {
+		running = true;
+		thread = new Thread(this);
+		thread.start();
+	}
+	private synchronized void stop() {
+		try {
+			thread.join();
+			running = false;
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+	}
+	@Override
+	public void run() {
+		
+	}
+}

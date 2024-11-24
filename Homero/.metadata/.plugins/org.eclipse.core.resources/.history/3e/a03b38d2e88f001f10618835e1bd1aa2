@@ -1,0 +1,14 @@
+package com.game.main;
+
+public class Game {
+
+	public Game() {
+		initialize();
+	}
+	
+	public static void main(String[] args) {
+
+		Player mario = new Player();
+	}
+
+}

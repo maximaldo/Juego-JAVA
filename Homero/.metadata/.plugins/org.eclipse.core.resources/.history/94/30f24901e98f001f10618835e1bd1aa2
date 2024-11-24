@@ -1,0 +1,29 @@
+package com.game.main;
+
+public class Game {
+
+	//  Constantes del juego
+	
+	// Variables del juego
+	private boolean running;
+	
+	// Componentes del juego
+	public Game() {
+		initialize();
+	}
+	
+	public static void main(String[] args) {
+
+		// Player mario = new Player();
+		new Game();
+	}
+	private void initialize() {
+		start();
+	}
+	private synchronized void start() {
+		
+	}
+	private synchronized void stop() {
+		
+	}
+}

@@ -1,0 +1,12 @@
+package com.game.gfx;
+
+import java.awt.Dimension;
+
+import javax.swing.JFrame;
+
+public class Window {
+	private JFrame frame;
+	private Dimension size;
+	
+	
+}

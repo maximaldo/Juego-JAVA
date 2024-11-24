@@ -1,0 +1,85 @@
+package com.game.main;
+
+import java.awt.Canvas;
+
+public class Game extends Canvas implements Runnable{
+
+	//  Constantes del juego
+	private static final int MILLIS_PER_SEC = 1000;
+	private static final int NANOS_PER_SEC = 1000000000;
+	private static final double NUM_TICKS = 60.0;
+	private static final String NAME = "Homero bros";
+	
+	private static final int WINDOW_WIDTH = 960;
+	private static final int WINDOW_HEIGHT = 720;
+	// Variables del juego
+	private boolean running;
+	
+	// Componentes del juego
+	private Thread thread;
+	
+	public Game() {
+		initialize();
+	}
+	
+	public static void main(String[] args) {
+
+		// Player mario = new Player();
+		new Game();
+	}
+	private void initialize() {
+		new Window();
+		start();
+	}
+	private synchronized void start() {
+		running = true;
+		thread = new Thread(this);
+		thread.start();
+	}
+	private synchronized void stop() {
+		try {
+			thread.join();
+			running = false;
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+	}
+	@Override
+	public void run() {
+		long lastTime = System.nanoTime();
+		double amountOfTicks = NUM_TICKS;
+		double ns = NANOS_PER_SEC / amountOfTicks;
+		double delta = 0;
+		long timer = System.currentTimeMillis();
+		int frames = 0;
+		int updates = 0;
+		while(running) {
+			long now = System.nanoTime();
+			delta += (now - lastTime) / ns;
+			lastTime = now;
+			while(delta >= 1) {
+				tick();
+				updates++;
+				delta--;
+			}
+			if(running) {
+				render();
+				frames++;
+			}
+			if(System.currentTimeMillis() - timer > MILLIS_PER_SEC) {
+				timer += MILLIS_PER_SEC;
+				System.out.println("FPS: " + frames + " TPS: " + updates);
+				updates = 0;
+				frames = 0;
+			}
+		} 
+		stop();
+	}
+	private void tick() {
+		
+	}
+	private void render() {
+		
+	}
+}
